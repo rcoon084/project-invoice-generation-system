@@ -11,6 +11,7 @@ public class InvoicePrinter
         Console.WriteLine("                INVOICE");
         Console.WriteLine("================================================");
         Console.WriteLine($"Customer: {toPrint.CustomerName}");
+        Console.WriteLine($"Id: {toPrint.InvoiceNumber}");
         Console.WriteLine("------------------------------------------------");
         Console.WriteLine();
 

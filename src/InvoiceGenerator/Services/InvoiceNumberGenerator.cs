@@ -4,9 +4,10 @@ using InvoiceGenerator.Models;
 
 public class InvoiceNumberGenerator
 {
-    int lastInvoiceCurrentNumber = 0;
+    int lastInvoiceCurrentNumber = 1;
     public int generate()
     {
+        Console.WriteLine(lastInvoiceCurrentNumber);
         return lastInvoiceCurrentNumber++;
     }
 }
