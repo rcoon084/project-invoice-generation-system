@@ -2,6 +2,7 @@
 
 
 InvoiceNumberGenerator idGenerator = new();
+InvoiceSaver saver = new();
 while (true)
 {
     Console.WriteLine("Welcome to the Invoice Generator. Please choose an option: \n");
@@ -12,7 +13,7 @@ while (true)
     switch (answer)
     {
         case "1":
-            InvoiceService invoiceService = new(idGenerator);
+            InvoiceService invoiceService = new(idGenerator, saver);
             InvoicePrinter invoicePrinter = new();
             invoicePrinter.print(invoiceService.startService(2));
             break;

@@ -11,13 +11,15 @@ public class InvoiceService
     public List<Item> items { get; set; }
 
     public InvoiceNumberGenerator idGenerator;
+    public InvoiceSaver saver;
 
-    public InvoiceService(InvoiceNumberGenerator id)
+    public InvoiceService(InvoiceNumberGenerator id, InvoiceSaver invoiceSaver)
     {
         Names = new List<string>();
         Prices = new List<decimal>();
         items = new List<Item>();
         idGenerator = id;
+        saver = invoiceSaver;
     }
 
     public Invoice startService(int quantity)
@@ -84,6 +86,7 @@ public class InvoiceService
             TotalAmount = calculator.calculate(quantity, items)
         };
 
+        saver.save(newInvoice);
         return newInvoice;
 
     }
