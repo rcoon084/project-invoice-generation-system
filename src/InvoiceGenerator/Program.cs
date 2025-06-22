@@ -13,7 +13,8 @@ while (true)
         case "1":
             InvoiceNumberGenerator idGenerator = new();
             InvoiceService invoiceService = new(idGenerator);
-            invoiceService.startService(2);
+            InvoicePrinter invoicePrinter = new();
+            invoicePrinter.print(invoiceService.startService(2));
             break;
         case "2":
             break;

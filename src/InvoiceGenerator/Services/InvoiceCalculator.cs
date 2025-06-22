@@ -6,11 +6,11 @@ public class InvoiceCalculator
 {
     private decimal total = 0;
 
-    public decimal calculate(int quantity, List<decimal> prices)
+    public decimal calculate(int quantity, List<Item> items)
     {
         for (int i = 0; i < quantity; i++)
         {
-            total += prices[i];
+            total += items[i].ItemPrice;
         }
 
         return total;

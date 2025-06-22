@@ -76,14 +76,12 @@ public class InvoiceService
 
         InvoiceCalculator calculator = new();
 
-        Console.WriteLine(calculator.calculate(quantity, Prices));
-
         Invoice newInvoice = new Invoice
         {
             InvoiceNumber = idGenerator.generate(),
             CustomerName = customerName,
             LineItems = items,
-            TotalAmount = calculator.calculate(quantity, Prices)
+            TotalAmount = calculator.calculate(quantity, items)
         };
 
         return newInvoice;
