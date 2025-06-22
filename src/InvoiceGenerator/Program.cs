@@ -3,6 +3,7 @@
 
 InvoiceNumberGenerator idGenerator = new();
 InvoiceSaver saver = new();
+InvoicePrinter invoicePrinter = new();
 while (true)
 {
     Console.WriteLine("Welcome to the Invoice Generator. Please choose an option: \n");
@@ -14,10 +15,10 @@ while (true)
     {
         case "1":
             InvoiceService invoiceService = new(idGenerator, saver);
-            InvoicePrinter invoicePrinter = new();
-            invoicePrinter.print(invoiceService.startService(2));
+            invoicePrinter.printOne(invoiceService.startService());
             break;
         case "2":
+            invoicePrinter.printAll(saver);
             break;
         case "0":
             return;

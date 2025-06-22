@@ -22,7 +22,7 @@ public class InvoiceService
         saver = invoiceSaver;
     }
 
-    public Invoice startService(int quantity)
+    public Invoice startService()
     {
         customerName = null;
         while (string.IsNullOrWhiteSpace(customerName))
@@ -36,7 +36,20 @@ public class InvoiceService
             }
         }
 
-        Console.WriteLine($"Please enter your {quantity} Items: ");
+        bool isValidNumber = false;
+        while (!isValidNumber)
+        {
+            string quantityInput = null;
+            Console.WriteLine($"Enter the number of items in the cart: ");
+            quantityInput = Console.ReadLine();
+            isValidNumber = int.TryParse(quantityInput, out quantity);
+
+            if (!isValidNumber)
+            {
+                Console.WriteLine("Invalid quantity format. Please enter a valid number (e.g., 29.99).");
+            }
+        }
+
 
         for (int i = 0; i < quantity; i++)
         {

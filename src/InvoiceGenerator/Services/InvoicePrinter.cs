@@ -5,7 +5,7 @@ namespace InvoiceGenerator.Services;
 
 public class InvoicePrinter
 {
-    public void print(Invoice toPrint)
+    public void printOne(Invoice toPrint)
     {
         Console.WriteLine("\n\n================================================");
         Console.WriteLine("                INVOICE");
@@ -31,6 +31,18 @@ public class InvoicePrinter
 
         Console.WriteLine($"{"TOTAL",-30} {toPrint.TotalAmount,10:C}");
         Console.WriteLine("================================================");
+    }
+
+    public void printAll(InvoiceSaver saver)
+    {
+        foreach (var invoice in saver.lastInvoices)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"Invoice ID: {invoice.InvoiceNumber}");
+            Console.WriteLine("oooooooooooooooooooooooooooooooooooooooooooooooo");
+            printOne(invoice);
+            Console.WriteLine("oooooooooooooooooooooooooooooooooooooooooooooooo");
+        }
     }
 
 
