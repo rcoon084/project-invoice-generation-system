@@ -4,10 +4,9 @@ using InvoiceGenerator.Models;
 
 public class InvoiceCalculator
 {
-    private decimal total = 0;
-
     public decimal calculate(int quantity, List<Item> items)
     {
+        decimal total = 0;
         for (int i = 0; i < quantity; i++)
         {
             total += items[i].ItemPrice;
