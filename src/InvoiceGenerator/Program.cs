@@ -7,7 +7,20 @@ while (true)
     Console.WriteLine("1. Create an Invoice.\n2. See all invoices\n0. Exit.");
     Console.WriteLine();
 
-    InvoiceService invoiceService = new();
+    string answer = Console.ReadLine();
+    switch (answer)
+    {
+        case "1":
+            InvoiceNumberGenerator idGenerator = new();
+            InvoiceService invoiceService = new(idGenerator);
+            invoiceService.startService(2);
+            break;
+        case "2":
+            break;
+        case "0":
+            return;
+        default:
+            break;
+    }
 
-    invoiceService.startService(2);
 }

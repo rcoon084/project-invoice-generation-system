@@ -5,19 +5,35 @@ using InvoiceGenerator.Models;
 public class InvoiceService
 {
     private int quantity;
+    private string customerName;
     public List<string> Names { get; set; }
     public List<decimal> Prices { get; set; }
     public List<Item> items { get; set; }
 
-    public InvoiceService()
+    public InvoiceNumberGenerator idGenerator;
+
+    public InvoiceService(InvoiceNumberGenerator id)
     {
         Names = new List<string>();
         Prices = new List<decimal>();
         items = new List<Item>();
+        idGenerator = id;
     }
 
-    public void startService(int quantity)
+    public Invoice startService(int quantity)
     {
+        customerName = null;
+        while (string.IsNullOrWhiteSpace(customerName))
+        {
+            Console.WriteLine($"Please enter the customer's name: ");
+            customerName = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(customerName))
+            {
+                Console.WriteLine("The customer's name cannot be empty. Please try again.");
+            }
+        }
+
         Console.WriteLine($"Please enter your {quantity} Items: ");
 
         for (int i = 0; i < quantity; i++)
@@ -61,6 +77,16 @@ public class InvoiceService
         InvoiceCalculator calculator = new();
 
         Console.WriteLine(calculator.calculate(quantity, Prices));
+
+        Invoice newInvoice = new Invoice
+        {
+            InvoiceNumber = idGenerator.generate(),
+            CustomerName = customerName,
+            LineItems = items,
+            TotalAmount = calculator.calculate(quantity, Prices)
+        };
+
+        return newInvoice;
 
     }
 }

@@ -5,8 +5,8 @@ using InvoiceGenerator.Models;
 public class InvoiceNumberGenerator
 {
     int lastInvoiceCurrentNumber = 0;
-    public void generate(Invoice invoice)
+    public int generate()
     {
-        invoice.InvoiceNumber = lastInvoiceCurrentNumber++;
+        return lastInvoiceCurrentNumber++;
     }
 }
