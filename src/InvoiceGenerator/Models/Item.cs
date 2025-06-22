@@ -2,8 +2,8 @@ namespace InvoiceGenerator.Models;
 
 public class Item
 {
-    required string ItemName { get; set; }
-    required decimal ItemPrice { get; set; }
+    public required string ItemName { get; set; }
+    public required decimal ItemPrice { get; set; }
 
     public Item (){}
 }
